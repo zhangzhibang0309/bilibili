@@ -1,0 +1,75 @@
+header {
+  height: 160px;
+  position: relative;
+  overflow: hidden;
+
+  --percentage: 0.5;
+}
+
+/* 将view和树重叠 */
+header .view, header .tree {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 将图片和视频重叠 */
+header img, header video {
+  position: absolute;
+  display: block;
+  width: 120%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 早晨是要在中午和晚上的上面，所以在设置z-index的时候morning的数值要大 */
+header .morning {
+  z-index: 20;
+  /* 图片在--percentage在0.25时实现透明 */
+  opacity: calc(1 - (var(--percentage) - 0.25) / 0.25);
+}
+
+header .afternoon {
+  z-index: 10;
+  /* 图片在--percentage在0.5时实现透明 */
+  opacity: calc(1 - (var(--percentage) - 0.5) / 0.5);
+}
+
+/* 背景图与前景树的视差移动效果 */
+header .view {
+  /* 位移最大距离是100px */
+  transform: translateX(calc(var(--percentage) * 100px));
+}
+
+header .tree {
+  /* 两个位移最大距离不相同，而产生视觉错位效果 */
+  transform: translateX(calc(var(--percentage) * 50px));
+  /* 将树设置为失焦效果 */
+  filter: blur(3px);
+}
+
+/* 做一种移动缓冲效果 */
+header .view,
+header .tree,
+header .morning,
+header .afternoon {
+  transition: .2s all ease-in;
+}
+
+/* 当header有.moving这个class的时候，取消transition的设定 */
+header.moving .view,
+header.moving .tree,
+header.moving .morning,
+header.moving .afternoon {
+  transition: none;
+}
+
+/* 窗框的积雪就会在最后的时候出现 */
+header .window-cover {
+  opacity: calc((var(--percentage) - 0.9) / 0.1);
+}

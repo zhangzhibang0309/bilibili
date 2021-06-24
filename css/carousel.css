@@ -1,0 +1,41 @@
+#body-top {
+  width: 553px
+}
+
+#body-top-carousel {
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  width: 553px;
+  height: 243px;
+}
+
+#body-top-carousel-ul {
+  width: 1000%;
+  height: 243px;
+  position: absolute;
+  top: 0;
+}
+
+.body-top-carousel-li {
+  list-style-type: none;
+  float: left;
+  width: 553px !important;
+  height: 243px;
+  position: relative;
+}
+
+#activeIcon {
+  width: 20px;
+  position: absolute;
+  top: 5px;
+  left: 0;
+}
+.body-top-carousel-textbox-listcir {
+  height: 10px;
+  width: 10px;
+  margin: 11px 3px;
+  background-color: white;
+  border-radius: 50%;
+  display: inline-block;
+}
